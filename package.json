@@ -101,7 +101,7 @@
     ],
     "testEnvironment": "enzyme",
     "testMatch": [
-      "<rootDir>/**/**.test.ts*"
+      "<rootDir>/**/**.test.{ts,tsx}"
     ],
     "transform": {
       "^.+\\.jsx?$": "<rootDir>/node_modules/babel-jest",
