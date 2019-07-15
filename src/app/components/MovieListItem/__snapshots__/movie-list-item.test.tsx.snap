@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieListItem rendering 1`] = `
+<BrowserRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <Component
+      model={
+        Object {
+          "id": 123,
+          "overview": "My Movie overview",
+          "poster_path": "image.jpg",
+          "title": "My Movie",
+        }
+      }
+    >
+      <div>
+        <div>
+          <LazyLoad
+            offset={0}
+            once={false}
+            overflow={false}
+            resize={false}
+            scroll={true}
+            unmountIfInvisible={false}
+          >
+            <div
+              className="lazyload-placeholder"
+              style={
+                Object {
+                  "height": undefined,
+                }
+              }
+            />
+          </LazyLoad>
+        </div>
+        <div>
+          <h1>
+            My Movie
+          </h1>
+          <p>
+            My Movie overview
+          </p>
+          <br />
+          <br />
+          <div>
+            <hr />
+            <Link
+              target="_blank"
+              to="/details/123"
+            >
+              <a
+                href="/details/123"
+                onClick={[Function]}
+                target="_blank"
+              >
+                MORE INFO
+              </a>
+            </Link>
+          </div>
+        </div>
+      </div>
+    </Component>
+  </Router>
+</BrowserRouter>
+`;

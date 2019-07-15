@@ -1,0 +1,16 @@
+@import "../../global.scss";
+
+.movieDetails {
+  background-color: $content-block-background-color;
+  border: 1px solid $content-block-border-color;
+  border-radius: $content-block-border-radius;
+  position: absolute;
+  width: 60%;
+  height: 400px;
+  left: 50%;
+  top: 50%;
+  margin-left: -30%;
+  margin-top: -200px;
+  overflow: auto;
+  padding: $content-block-padding-1;
+}

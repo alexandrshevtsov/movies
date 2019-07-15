@@ -1,0 +1,38 @@
+.movieList {
+  position: absolute;
+  width: 60%;
+  left: 50%;
+  margin-left: -30%;
+
+  .movieListPaged {
+    margin: 0;
+    padding: 0;
+
+    .movieListPagedItem {
+      list-style-type: none;
+    }
+  }
+
+  .pagerContainerClassName {
+    width: 100%;
+    text-align: center;
+
+    .pagerClassName {
+      display: inline-block;
+      margin: 0;
+      padding: 0;
+
+      .pagerItemClassName {
+        float: left;
+        list-style-type: none;
+        display: inline;
+        padding-right: 5px;
+        font-size: 24px;
+
+        a, a:hover, a:visited {
+          color: #30F;
+        }
+      }
+    }
+  }
+}

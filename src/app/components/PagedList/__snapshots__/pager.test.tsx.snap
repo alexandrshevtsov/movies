@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pager rendering and navigation 1`] = `
+<BrowserRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <Component
+      batchCount={3}
+      batchIndex={1}
+      className="myPager"
+      itemClassName="myPagerItem"
+      pageClick={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              0,
+            ],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        }
+      }
+      pageLink="/test"
+    >
+      <ul
+        className="myPager"
+      >
+        <li
+          className="myPagerItem"
+          key="pager-item-0"
+        >
+          <Link
+            onClick={[Function]}
+            to="/test"
+          >
+            <a
+              href="/test"
+              onClick={[Function]}
+            >
+              1
+            </a>
+          </Link>
+        </li>
+        <li
+          className="myPagerItem"
+          key="pager-item-1"
+        >
+          2
+        </li>
+        <li
+          className="myPagerItem"
+          key="pager-item-2"
+        >
+          of 
+          <Link
+            onClick={[Function]}
+            to="/test/3"
+          >
+            <a
+              href="/test/3"
+              onClick={[Function]}
+            >
+              3
+            </a>
+          </Link>
+        </li>
+      </ul>
+    </Component>
+  </Router>
+</BrowserRouter>
+`;

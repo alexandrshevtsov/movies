@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchPane should contain input and button 1`] = `
+<SearchPane
+  onSearch={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          "",
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  query="black"
+>
+  <div>
+    <input
+      maxLength={50}
+      type="text"
+    />
+    <button
+      onClick={[Function]}
+    >
+      Search
+    </button>
+  </div>
+</SearchPane>
+`;
