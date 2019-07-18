@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
 import { requestMovieDetails } from 'app/actions';
 import { MovieDetailsModel } from '../../models/';
 import styles from './movie-details.scss';
@@ -10,22 +8,13 @@ interface IMovieDetailsProps extends IMovieDetailsConnectedProps {
   id: number;
 }
 
-interface IMovieDetailsState {}
-
 interface IMovieDetailsConnectedProps {
   requestMovieDetails?: (id: number) => void;
   data?: MovieDetailsModel;
 }
 
-@connect(
-  (state: any) => state,
-  (dispatch: Dispatch) => bindActionCreators({ requestMovieDetails }, dispatch)
-)
-export class MovieDetails extends React.Component<IMovieDetailsProps, IMovieDetailsState> {
-  constructor(props: IMovieDetailsProps) {
-    super(props);
-  }
-
+@connect(state => state.movies, { requestMovieDetails })
+export class MovieDetails extends React.Component<IMovieDetailsProps> {
   componentDidMount() {
     const requestMovieDetails = this.props.requestMovieDetails;
     if (requestMovieDetails) requestMovieDetails(this.props.id);

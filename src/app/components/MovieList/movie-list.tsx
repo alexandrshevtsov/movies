@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
 import { PagedList } from '../PagedList/paged-list';
 import { MovieListPageModel } from '../../models';
 import { requestMovies } from '../../actions';
@@ -14,25 +12,22 @@ interface IMovieListProps extends IMovieListConnectedProps {
   pageNumber?: number;
 }
 
-interface IMovieListState {}
-
 interface IMovieListConnectedProps {
-  requestMovies?: (query: string, page: number) => void; //,
+  requestMovies?: (query: string, page: number) => void;
   data?: MovieListPageModel;
 }
 
-@connect(
-  (state: any) => state,
-  (dispatch: Dispatch) => bindActionCreators({ requestMovies }, dispatch)
-)
-export class MovieList extends React.Component<IMovieListProps, IMovieListState> {
+@connect(state => state.movies, { requestMovies })
+export class MovieList extends React.Component<IMovieListProps> {
   componentDidUpdate(prevProps: IMovieListProps) {
-    if (prevProps.query !== this.props.query && this.props.query.length > 0)
-      this.loadBatch((this.props.pageNumber || 1) - 1);
+    const props = this.props;
+    if (prevProps.query !== props.query && props.query.length > 0)
+      this.loadBatch((props.pageNumber || 1) - 1);
   }
 
   loadBatch = (batchIndex: number) => {
-    if (this.props.requestMovies) this.props.requestMovies(this.props.query, batchIndex + 1);
+    const props = this.props;
+    if (props.requestMovies) props.requestMovies(props.query, batchIndex + 1);
   };
 
   render() {

@@ -16,33 +16,28 @@ interface IPagedListProps {
   batches?: any[];
 }
 
-interface IPagedListState {}
-
-export class PagedList extends React.Component<IPagedListProps, IPagedListState> {
-  render() {
-    const props = this.props;
+export const PagedList = (props: IPagedListProps) => {
     const batch = props.batch;
     if (!batch) return null;
     return (
       <>
-        <ul className={this.props.className}>
+        <ul className={props.className}>
           {batch.elements.map((el, index) => (
-            <li className={this.props.itemClassName} key={`page-list-item-${index}`}>
+            <li className={props.itemClassName} key={`page-list-item-${index}`}>
               {el}
             </li>
           ))}
         </ul>
-        <div className={this.props.pagerContainerClassName}>
+        <div className={props.pagerContainerClassName}>
           <Pager
-            className={this.props.pagerClassName}
-            itemClassName={this.props.pagerItemClassName}
-            batchIndex={this.props.batchIndex}
-            batchCount={this.props.batchCount}
-            pageLink={this.props.pageLink}
-            pageClick={this.props.loadBatch}
+            className={props.pagerClassName}
+            itemClassName={props.pagerItemClassName}
+            batchIndex={props.batchIndex}
+            batchCount={props.batchCount}
+            pageLink={props.pageLink}
+            pageClick={props.loadBatch}
           />
         </div>
       </>
     );
-  }
 }
