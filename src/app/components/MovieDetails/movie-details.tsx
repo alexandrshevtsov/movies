@@ -13,6 +13,7 @@ interface IMovieDetailsConnectedProps {
   requestMovieDetails?: (id: number) => void;
   data?: MovieDetailsModel;
   isLoading?: boolean;
+  error?: string;
 }
 
 @connect(state => state.movies, { requestMovieDetails })
@@ -22,17 +23,24 @@ export class MovieDetails extends React.Component<IMovieDetailsProps> {
     if (requestMovieDetails) requestMovieDetails(this.props.id);
   }
 
-  render() {
+  renderDetails = () => {
     const data = this.props.data;
-    const isLoading = this.props.isLoading;
     if (!data) return null;
     return (
-      <>
         <div className={styles.movieDetails}>
           <h1>{data.title}</h1>
           <p>{data.overview}</p>
         </div>
-        {isLoading && <Loader />}
+    );
+  }
+
+  render() {
+    const isLoading = this.props.isLoading;
+    const error = this.props.error;
+    return (
+      <>
+        {this.renderDetails()}
+        {(isLoading || error) && <Loader message={error} showAsError={!!error} />}
       </>
     );
   }

@@ -17,6 +17,7 @@ interface IMovieListConnectedProps {
   requestMovies?: (query: string, page: number) => void;
   data?: MovieListPageModel;
   isLoading?: boolean;
+  error?: string;
 }
 
 @connect(state => state.movies, { requestMovies })
@@ -32,32 +33,39 @@ export class MovieList extends React.Component<IMovieListProps> {
     if (props.requestMovies) props.requestMovies(props.query, batchIndex + 1);
   };
 
-  render() {
+  renderList = () => {
     const data = this.props.data;
-    const isLoading = this.props.isLoading;
+    console.log(this.props)
     if (!data || !data.results) return null;
     const batchIndex = data.page - 1;
     const batchCount = data.total_pages;
     let elements = data.results.map((item) => <MovieListItem model={item} />);
     let batch = { batchIndex, elements };
+
+    return (<div className={styles.movieList}>
+      <PagedList
+        className={styles.movieListPaged}
+        itemClassName={styles.movieListPagedItem}
+        pagerContainerClassName={styles.pagerContainerClassName}
+        pagerClassName={styles.pagerClassName}
+        pagerItemClassName={styles.pagerItemClassName}
+        batchIndex={batchIndex}
+        batchSize={data.results.length}
+        batchCount={batchCount}
+        batch={batch}
+        pageLink={this.props.pageLink}
+        loadBatch={this.loadBatch}
+      />
+    </div>);
+  }
+
+  render() {
+    const isLoading = this.props.isLoading;
+    const error = this.props.error;
     return (
       <>
-        <div className={styles.movieList}>
-          <PagedList
-            className={styles.movieListPaged}
-            itemClassName={styles.movieListPagedItem}
-            pagerContainerClassName={styles.pagerContainerClassName}
-            pagerClassName={styles.pagerClassName}
-            pagerItemClassName={styles.pagerItemClassName}
-            batchIndex={batchIndex}
-            batchSize={data.results.length}
-            batchCount={batchCount}
-            batch={batch}
-            pageLink={this.props.pageLink}
-            loadBatch={this.loadBatch}
-          />
-        </div>
-        {isLoading && <Loader />}
+        {this.renderList()}
+        {(isLoading || error) && <Loader message={error} showAsError={!!error} />}
       </>
     );
   }
