@@ -14,8 +14,9 @@ interface IMovieListProps extends IMovieListConnectedProps {
 }
 
 interface IMovieListConnectedProps {
-  requestMovies?: (query: string, page: number) => void;
+  requestMovies?: (query: string, page: number, callback?: () => any) => void;
   data?: MovieListPageModel;
+  callback?: () => void;
   isLoading?: boolean;
   error?: string;
 }
@@ -26,16 +27,18 @@ export class MovieList extends React.Component<IMovieListProps> {
     const props = this.props;
     if (prevProps.query !== props.query && props.query.length > 0)
       this.loadBatch((props.pageNumber || 1) - 1);
+    if (props.callback)
+      props.callback();
   }
 
   loadBatch = (batchIndex: number) => {
     const props = this.props;
-    if (props.requestMovies) props.requestMovies(props.query, batchIndex + 1);
+    if (props.requestMovies)
+      props.requestMovies(props.query, batchIndex + 1, () => window.scrollTo(0, 0));
   };
 
   renderList = () => {
     const data = this.props.data;
-    console.log(this.props)
     if (!data || !data.results) return null;
     const batchIndex = data.page - 1;
     const batchCount = data.total_pages;

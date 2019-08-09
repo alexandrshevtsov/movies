@@ -1,16 +1,71 @@
 @import "../../global.scss";
 
-.movieDetails {
-  background-color: $content-block-background-color;
-  border: 1px solid $content-block-border-color;
-  border-radius: $content-block-border-radius;
+.movieDetailsContainer {
   position: absolute;
   width: 60%;
-  height: 400px;
   left: 50%;
-  top: 50%;
   margin-left: -30%;
-  margin-top: -200px;
-  overflow: auto;
-  padding: $content-block-padding-1;
+  padding-top: $content-block-padding-2;
+  padding-bottom: $content-block-padding-2;
+
+  .movieDetails {
+    background-color: $content-block-background-color;
+    border: 1px solid $content-block-border-color;
+    border-radius: $content-block-border-radius;
+    overflow: visible;
+    padding: $content-block-padding-1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .title {
+      text-align: center;
+      width: 100%;
+    }
+
+    .imageContainer {
+      padding-bottom: $content-block-padding-2;
+
+      .image {
+        display: block;
+        width: 500px;
+        min-width: 500px;
+      }
+    }
+
+    .propertiesContainer {
+      width: calc(60vw - 555px);
+      padding-left: $content-block-padding-2;
+      padding-right: $content-block-padding-2;
+      vertical-align: top;
+      min-width: 520px;
+      padding-bottom: $content-block-padding-2;
+
+      .propertiesList {
+        margin: 0;
+        padding: 0;
+
+        .propertyIem {
+          list-style-type: none;
+
+          .propertyLabel {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+
+    .overwiewContainer {
+      padding-top: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .movieDetailsContainer {
+    width: 100%;
+    left: 50%;
+    margin-left: -50%;
+    padding: $content-block-padding-2;
+  }
 }

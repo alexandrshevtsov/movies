@@ -8,8 +8,8 @@ export const REQUEST_MOVIE_DETAILS = 'REQUEST_MOVIE_DETAILS';
 export const RECEIVE_MOVIE_DETAILS = 'RECEIVE_MOVIE_DETAILS';
 export const RECEIVE_MOVIE_DETAILS_ERROR = 'RECEIVE_MOVIE_DETAILS_ERROR';
 
-export const requestMovies = (query: string, page: number) => ({ type: REQUEST_MOVIES, query, page });
-export const receiveMovies = (data: MovieListPageModel) => ({ type: RECEIVE_MOVIES, data });
+export const requestMovies = (query: string, page: number, callback?: () => void) => ({ type: REQUEST_MOVIES, query, page, callback });
+export const receiveMovies = (data: MovieListPageModel, callback?: () => any) => ({ type: RECEIVE_MOVIES, data, callback });
 export const receiveMoviesError = (error: string) => ({ type: RECEIVE_MOVIES_ERROR, error });
 
 export const requestMovieDetails = (id: number) => ({ type: REQUEST_MOVIE_DETAILS, id });

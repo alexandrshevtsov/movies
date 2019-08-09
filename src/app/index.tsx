@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Route, Switch } from 'react-router';
-import { Details, Movies } from 'app/pages';
+import { Details, Movies } from './pages';
 import { hot } from 'react-hot-loader';
 import './index.scss';
 

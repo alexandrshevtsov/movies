@@ -9,30 +9,39 @@ interface IMovieListItemProps {
 }
 
 export const MovieListItem = (props: IMovieListItemProps) => {
-  const detailsUrl = `/details/${props.model.id}`;
+  const model = props.model;
+  const detailsUrl = `/details/${model.id}`;
+  const imageUrl = !!model.poster_path ? `https://image.tmdb.org/t/p/w500/${model.poster_path}` : 'assets/no-image-available.svg';
   return (
     <div className={styles.movieListItem}>
       <div className={styles.imageContainer}>
         <LazyLoad>
           <Link to={detailsUrl} target="_blank">
-            <img
-              className={styles.image}
-              alt=""
-              src={`https://image.tmdb.org/t/p/w500/${props.model.poster_path}`}
-            />
+            <img className={styles.image} alt="" src={imageUrl} />
           </Link>
         </LazyLoad>
       </div>
       <div className={styles.infoContainer}>
-        <h1>{props.model.title}</h1>
-        <p>{props.model.overview}</p>
-        <br />
-        <br />
+        <h1>{model.title}</h1>
+        <p className={styles.movieInfo}>
+          {model.overview}
+          <ul>
+            <li>original title: {model.original_title}</li>
+            <li>release date: {model.release_date}</li>
+            <li>original language: {model.original_language}</li>
+            <li>rating: {model.vote_average}</li>
+            <li>popularity: {model.popularity}</li>
+          </ul>
+        </p>
+        <br className={styles.spreader} />
+        <br className={styles.spreader} />
         <div className={styles.detailsLinkContainer}>
-          <hr />
-          <Link className={styles.detailsLink} to={detailsUrl} target="_blank">
-            MORE INFO
-          </Link>
+          <div className={styles.detailsLinkContainerInner}>
+            <hr />
+            <Link className={styles.detailsLink} to={detailsUrl} target="_blank">
+              MORE INFO
+            </Link>
+          </div>
         </div>
       </div>
     </div>

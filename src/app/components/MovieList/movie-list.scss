@@ -1,3 +1,5 @@
+@import "../../global.scss";
+
 .movieList {
   position: absolute;
   width: 60%;
@@ -27,12 +29,32 @@
         list-style-type: none;
         display: inline;
         padding-right: 5px;
-        font-size: 24px;
-
-        a, a:hover, a:visited {
-          color: #30F;
-        }
       }
     }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .movieList {
+    width: 100%;
+    left: 50%;
+    margin-left: -50%;
+
+    .movieListPaged {
+      padding-left: $content-block-padding-2;
+      padding-right: $content-block-padding-2;
+    }
+  }
+
+  .pagerContainerClassName {
+    padding-left: $content-block-padding-2;
+    padding-right: $content-block-padding-2;
+  }
+}
+
+@media screen and (max-width: 600px) {
+
+  .pagerItemClassName {
+    font-size: 36px;
   }
 }

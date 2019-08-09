@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { MovieList } from 'app/components';
+import { MovieList } from '../../components';
 import { stringToInteger } from '../../utils';
 import { SearchPane } from '../../components/SearchPane/search-pane';
 
@@ -10,38 +10,40 @@ interface IMoviesProps {
 
 interface IMoviesState {
   query: string;
+  pageNumber: number
 }
 
 export class Movies extends React.Component<IMoviesProps, IMoviesState> {
   constructor(props: IMoviesProps) {
     super(props);
-    this.state = { query: '' };
+    this.state = { query: '', pageNumber: 1 };
   }
 
   componentDidMount() {
     const query = this.props.match.params.query;
+    const pageNumber = stringToInteger(this.props.match.params.page, 1);
     if (query && query.length > 0) {
-      this.search(query);
+      this.search(query, pageNumber);
     }
   }
 
-  getPageNumber = (): number => stringToInteger(this.props.match.params.page, 1);
-
   getPageLink = (): string => `/movies/${this.state.query}`;
 
-  search = (query: string, callback?: () => void): void =>
-    this.setState({ query: query }, callback);
+  getCurrentPageLink = (): string => `${this.getPageLink() + (this.state.pageNumber > 1 ? `/${this.state.pageNumber}` : '')}`;
 
-  searchClick = (query: string): void =>
-    this.search(query, () => this.props.history.push(this.getPageLink()));
+  search = (query: string, pageNumber: number): void => this.setState({ query: query, pageNumber: pageNumber }, () => this.props.history.push(this.getCurrentPageLink()));
+
+  searchClick = (query: string): void =>  this.search(query, 1);
 
   render() {
+    const state = this.state;
+
     return (
       <>
-        <SearchPane query={this.state.query} onSearch={this.searchClick} />
+        <SearchPane query={state.query} onSearch={this.searchClick} />
         <MovieList
-          query={this.state.query}
-          pageNumber={this.getPageNumber()}
+          query={state.query}
+          pageNumber={state.pageNumber}
           pageLink={this.getPageLink()}
         />
       </>

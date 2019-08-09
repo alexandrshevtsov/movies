@@ -1,20 +1,32 @@
 @import "../../global.scss";
 
 .searchPaneContainer {
-  width: calc(100vw - 24px);
-  padding: 2px;
+  width: 60%;
+  padding-top: 4px;
+  padding-bottom: 2px;
+  left: 50%;
+  margin-left: -30%;
+  position: relative;
 
-
-  input {
-    font-size: 20px;
-    line-height: 32px;
-    width: calc(100vw - 140px);
-    padding-left: 5px;
+  .searchText {
+    width: calc(60vw - 94px);
   }
 
-  button {
+  .searchButton {
     margin-left: 2px;
-    font-size: 20px;
-    line-height: 32px;
+    width: 80px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .searchPaneContainer {
+    width: 100%;
+    left: 50%;
+    margin-left: -50%;
+    padding-left: $content-block-padding-2;
+
+    .searchText {
+      width: calc(100vw - 120px);
+    }
   }
 }

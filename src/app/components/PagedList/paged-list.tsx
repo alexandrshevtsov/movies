@@ -23,7 +23,7 @@ export const PagedList = (props: IPagedListProps) => {
     <>
       <ul className={props.className}>
         {batch.elements.map((el, index) => (
-          <li className={props.itemClassName} key={`page-list-item-${index}`}>
+          <li className={props.itemClassName} key={`page-list-item-${props.pageLink}/${index}`}>
             {el}
           </li>
         ))}

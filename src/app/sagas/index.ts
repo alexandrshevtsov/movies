@@ -6,20 +6,20 @@ import {
   REQUEST_MOVIE_DETAILS,
   receiveMovieDetails,
   receiveMovieDetailsError
-} from 'app/actions';
-import { getMovies, getMovieDetails } from 'app/services';
+} from '../actions';
+import { getMovies, getMovieDetails } from '../services';
 
-function* getMoviesSaga(action: any /* TODO */) {
+export function* getMoviesSaga(action: any /* TODO */) {
   try {
     const data = yield call(() => getMovies(action.query, action.page));
-    yield put(receiveMovies(data));
+    yield put(receiveMovies(data, action.callback));
   } catch (e) {
     yield put(receiveMoviesError(e.message));
     console.log(e);
   }
 }
 
-function* getMovieDetailsSaga(action: any /* TODO */) {
+export function* getMovieDetailsSaga(action: any /* TODO */) {
   try {
     const data = yield call(() => getMovieDetails(action.id));
     yield put(receiveMovieDetails(data));

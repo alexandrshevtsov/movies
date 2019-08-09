@@ -145,17 +145,18 @@ module.exports = {
   ],
   devServer: {
     contentBase: sourcePath,
-	watchContentBase: true,
-    hot: true,
-    inline: true,
-	watchOptions: {
-	  poll: true
-	},
+	  watchContentBase: true,
+      hot: true,
+      inline: true,
+	  watchOptions: {
+	    poll: true
+	  },
     historyApiFallback: {
       disableDotRule: true
     },
     stats: 'minimal',
-    clientLogLevel: 'warning'
+    clientLogLevel: 'warning',
+    disableHostCheck: true
   },
   // https://webpack.js.org/configuration/devtool/
   devtool: isProduction ? 'hidden-source-map' : 'cheap-module-eval-source-map',

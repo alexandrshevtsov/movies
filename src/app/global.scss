@@ -3,7 +3,49 @@ $background-color: #eee;
 $content-block-background-color: #fff;
 $content-block-border-color: #ccc;
 
+$control-border-color: #ccc;
+
 $content-block-padding-1: 20px;
 $content-block-padding-2: 10px;
 $content-block-spacing: 5px;
 $content-block-border-radius: 5px;
+
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0.1;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fade-in {
+  0% {
+    opacity: 0.1;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes fade-in {
+  0% {
+    opacity: 0.1;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0.1;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

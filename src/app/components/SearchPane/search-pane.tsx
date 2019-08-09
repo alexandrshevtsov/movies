@@ -23,8 +23,8 @@ export class SearchPane extends React.Component<ISearchPaneProps> {
   render() {
     return (
       <div className={styles.searchPaneContainer}>
-        <input type="text" maxLength={50} ref={(ref) => (this.inputQuery = ref)} />
-        <button onClick={this.searchClick}>Search</button>
+        <input className={styles.searchText} type="text" maxLength={50} ref={(ref) => (this.inputQuery = ref)} />
+        <button className={styles.searchButton} onClick={this.searchClick}>Search</button>
       </div>
     );
   }
