@@ -8,7 +8,7 @@ import { inspect } from 'util' // or directly
 describe('Sagas', () => {
   it('getMoviesSaga', () => {
     let action = { type: REQUEST_MOVIES, query: 'matrix', page: 1 };
-    let data = {} as unknown as MovieListPageModel;
+    let data = undefined as unknown as MovieListPageModel;
     let gen = getMoviesSaga(action);
     let current = gen.next();
     expect(inspect(current.value)).toEqual(inspect(call(() => getMovies(action.query, action.page))));

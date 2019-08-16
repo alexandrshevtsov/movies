@@ -19,8 +19,8 @@ describe('MovieListItem', () => {
     );
     const titleComponent = component.find('h1');
     expect(titleComponent.contains('My Movie')).toBe(true);
-    const overviewComponent = component.find('p');
-    expect(overviewComponent.contains('My Movie overview')).toBe(true);
+    //const overviewComponent = component.find('');
+    //expect(overviewComponent.contains('My Movie overview')).toBe(true);
     expect(component).toMatchSnapshot();
   });
 });

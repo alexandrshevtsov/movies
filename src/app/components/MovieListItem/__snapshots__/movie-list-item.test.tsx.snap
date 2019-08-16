@@ -58,25 +58,44 @@ exports[`MovieListItem rendering 1`] = `
           <h1>
             My Movie
           </h1>
-          <p>
+          <div>
             My Movie overview
-          </p>
+            <ul>
+              <li>
+                original title: 
+              </li>
+              <li>
+                release date: 
+              </li>
+              <li>
+                original language: 
+              </li>
+              <li>
+                rating: 
+              </li>
+              <li>
+                popularity: 
+              </li>
+            </ul>
+          </div>
           <br />
           <br />
           <div>
-            <hr />
-            <Link
-              target="_blank"
-              to="/details/123"
-            >
-              <a
-                href="/details/123"
-                onClick={[Function]}
+            <div>
+              <hr />
+              <Link
                 target="_blank"
+                to="/details/123"
               >
-                MORE INFO
-              </a>
-            </Link>
+                <a
+                  href="/details/123"
+                  onClick={[Function]}
+                  target="_blank"
+                >
+                  MORE INFO
+                </a>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

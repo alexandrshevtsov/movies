@@ -23,7 +23,7 @@ export const MovieListItem = (props: IMovieListItemProps) => {
       </div>
       <div className={styles.infoContainer}>
         <h1>{model.title}</h1>
-        <p className={styles.movieInfo}>
+        <div className={styles.movieInfo}>
           {model.overview}
           <ul>
             <li>original title: {model.original_title}</li>
@@ -32,7 +32,7 @@ export const MovieListItem = (props: IMovieListItemProps) => {
             <li>rating: {model.vote_average}</li>
             <li>popularity: {model.popularity}</li>
           </ul>
-        </p>
+        </div>
         <br className={styles.spreader} />
         <br className={styles.spreader} />
         <div className={styles.detailsLinkContainer}>
